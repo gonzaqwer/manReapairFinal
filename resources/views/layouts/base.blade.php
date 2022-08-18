@@ -11,6 +11,9 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/base.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/all.js') }}"></script>
+    <script src="{{ asset('js/pago.js') }}" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 
 <body>

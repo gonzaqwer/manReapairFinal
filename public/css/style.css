@@ -1,0 +1,8 @@
+.divPagar{
+    display: flex;
+    justify-content: center;
+}
+
+.botonPagar{
+    padding: 10px 50px;
+}

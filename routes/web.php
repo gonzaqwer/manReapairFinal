@@ -175,3 +175,8 @@ Route::group(['middleware' => 'auth:empleados', 'prefix' => 'admin'], function (
         Route::post('generar', [ReporteController::class, 'generarReporte'])->name('admin.reportes.generarReporteDeServicio');
     });
 });
+
+
+Route::get('/pago', function () {
+    return view('pago');
+});
