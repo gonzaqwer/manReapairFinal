@@ -11,6 +11,8 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/base.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/all.js') }}"></script>
+    {{-- Pago --}}
+    <script src="{{ asset('js/pago.js') }}" defer></script>
     @stack('head')
 </head>
 

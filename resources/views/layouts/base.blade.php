@@ -11,8 +11,11 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/base.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/all.js') }}"></script>
+    {{-- Pago --}}
     <script src="{{ asset('js/pago.js') }}" defer></script>
-    <link rel="stylesheet" href="style.css">
+    <link href="{{ asset('css/pago.css') }}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/aaa39b2535.js" crossorigin="anonymous"></script>
+    {{-- Pago --}}
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 
@@ -21,7 +24,8 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="/#">Man Repair</a>
             <div class="d-flex align-items-center">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -30,13 +34,13 @@
                             <a class="nav-link active" aria-current="page" href="/#">Inicio</a>
                         </li>
                         @guest()
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('empleado.iniciarSesion')}}">Iniciar sesion</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('empleado.iniciarSesion') }}">Iniciar sesion</a>
+                            </li>
                         @endguest
                         @auth()
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.index')}}">Dashboard Administrativo</a>
+                                <a class="nav-link" href="{{ route('admin.index') }}">Dashboard Administrativo</a>
                             </li>
                         @endauth
                     </ul>

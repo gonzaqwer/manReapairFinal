@@ -165,4 +165,14 @@ class OrdenDeServicio extends Model
         }
         return $query;
     }
+
+    public function pagos(){
+        return $this->hasMany(Pago::class, 'nro_orden_de_servicio', 'nro');
+    }
+
+    public function ultimoPago(){
+        // dd($this->hasOne(Pago::class, 'nro_orden_de_servicio', 'nro')->latest());
+        return $this->hasOne(Pago::class, 'nro_orden_de_servicio', 'nro')->latest();
+    }
 }
+

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ModeloController;
+use App\Http\Controllers\PagoController;
 use App\Http\Controllers\ReporteController;
 
 
@@ -177,6 +178,11 @@ Route::group(['middleware' => 'auth:empleados', 'prefix' => 'admin'], function (
 });
 
 
-Route::get('/pago', function () {
-    return view('pago');
-});
+// Route::get('/pago', function () {
+//     return view('pago');
+// });
+
+// Route::resource('/pago', PagoController::class);
+
+Route::get('/{orden_de_servicio}/pago', [PagoController::class, 'preview'])->name('pago.preview');
+Route::post('/{orden_de_servicio}/pago', [PagoController::class, 'pagar'])->name('pago.store');
