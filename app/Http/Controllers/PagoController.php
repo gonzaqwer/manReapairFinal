@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePagoRequest;
+use App\Mail\EmailConfirmacionPago;
 use App\Models\OrdenDeServicio;
 use App\Models\Pago;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 
 class PagoController extends Controller
@@ -34,6 +36,9 @@ class PagoController extends Controller
         if($exitoPago <= 8){
             $request = ['estado'=>'Pagado', 'correo'=>$request->correoElectronico, 'nro_orden_de_servicio'=>$orden_de_servicio->nro];
             Pago::create($request);
+            $nroPago = random_int(1000, 1000000);
+            // dd($orden_de_servicio->importe_reparacion);
+            Mail::to($request['correo'])->send(new EmailConfirmacionPago($nroPago, $orden_de_servicio->importe_reparacion));
             return redirect(route('orden.buscar', [$orden_de_servicio->nro]))->with('status', 'Pago realizado con exito');
         }else{
             $request = ['estado'=>'Rechazado', 'correo'=>'mainRepair@hotmail.com', 'nro_orden_de_servicio'=>$orden_de_servicio->nro];
